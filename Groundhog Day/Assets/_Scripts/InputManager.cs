@@ -42,7 +42,7 @@ public class InputManager : MonoBehaviour {
 			}
 
 			if (Input.GetKeyDown (KeyCode.I)) {
-				Grid.Inventory.UpdateObject (new GameObject ("Remote"), true);
+				Grid.Inventory.UpdateObject (new GameObject ("BucketEmpty"), true);
 			}
 		}
 	}

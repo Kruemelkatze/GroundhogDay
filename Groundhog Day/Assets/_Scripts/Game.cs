@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour {
 
+	public AudioClip AudioClipOnNotPossible;
 	//Stores all (globally) relevant game variables
 	//Camera Positions
 	public Vector3 FactoryPosition;
@@ -24,6 +25,7 @@ public class Game : MonoBehaviour {
 		_cameraObj = Grid.MainCamera;
 		_cameraMovement = _cameraObj.GetComponent<CameraMovement> ();
 
+		Physics.queriesHitTriggers = true;
 		Cursor.visible = true;
 
 		Grid.EventHub.ResetEvent += Restart;
