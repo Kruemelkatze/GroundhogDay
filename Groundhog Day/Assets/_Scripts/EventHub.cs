@@ -8,20 +8,31 @@ public class EventHub : MonoBehaviour {
 	public delegate void IntegerParamEvent (int value);
 	public delegate void GameObjectParamEvent(GameObject obj);
 	public delegate void GameObjectIntegerParamEvent(GameObject enemy, int value);
+	public delegate void MovementParamEvent(Vector3 position, Vector3 location, bool lerp = false);
+
 	#endregion
 
 
 	#region Events
-	public event VoidEvent ExampleVoidEvent;
-	public event IntegerParamEvent ExampleIntegerEvent;
-	public event GameObjectParamEvent ExampleGameObjectEvent;
-	public event GameObjectIntegerParamEvent ExampleCombinedEvent;
+	public event VoidEvent LookLeftEvent;
+	public event VoidEvent LookRightEvent;
+	public event MovementParamEvent MoveCameraEvent;
 	#endregion
 
 	#region Triggers
-	public void TriggerExampleIntegerEvent(int val) {
-		if(ExampleIntegerEvent != null)
-			ExampleIntegerEvent (val);
+	public void TriggerLookLeftEvent() {
+		if(LookLeftEvent != null)
+			LookLeftEvent ();
+	}
+
+	public void TriggerLookRightEvent() {
+		if(LookRightEvent != null)
+			LookRightEvent ();
+	}
+
+	public void TriggerMoveCameraEvent(Vector3 position, Vector3 location, bool lerp = false) {
+		if(MoveCameraEvent != null)
+			MoveCameraEvent (position, location, lerp);
 	}
 
 	//You get the idea on how this is done...

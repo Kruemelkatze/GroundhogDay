@@ -54,6 +54,7 @@ public class Grid : MonoBehaviour
 	public static Game GameLogic;
 	public static SoundManager SoundManager;
 	public static Light DirectionalLight;
+	public static GameObject MainCamera;
 
 	// when the program launches, Grid will check that all the needed elements are in place
 	// that's exactly what you do in the static constructor here:
@@ -91,6 +92,7 @@ public class Grid : MonoBehaviour
 		g = SafeFind ("Directional Light");
 		DirectionalLight = (Light)SafeComponent (g, "Light");
 
+		MainCamera = SafeFind ("Main Camera");
 	}
 
 	// this has no purpose other than for developers wondering HTF you use Grid

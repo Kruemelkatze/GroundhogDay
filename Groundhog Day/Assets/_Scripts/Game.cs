@@ -5,27 +5,49 @@ using UnityEngine.SceneManagement;
 public class Game : MonoBehaviour {
 
 	//Stores all (globally) relevant game variables
+	//Camera Positions
+	public Vector3 FactoryPosition;
+	public Vector3 VillagePosition;
+	public Vector3 StoreRoomPosition;
+
+	//Private Fields
+	private GameObject _cameraObj;
+	private CameraMovement _cameraMovement;
 
 	void Start() {
-		Grid.EventHub.TriggerExampleIntegerEvent(5);
-		Grid.EventHub.ExampleIntegerEvent += OnExampleIntegerEvent;
-		Grid.EventHub.TriggerExampleIntegerEvent(15);
+		_cameraObj = Grid.MainCamera;
+		_cameraMovement = _cameraObj.GetComponent<CameraMovement> ();
 	}
 
 	void OnDestroy() {
 		/* Unregister Events */
-		Grid.EventHub.ExampleIntegerEvent -= OnExampleIntegerEvent;
-	}
-
-	public void OnExampleIntegerEvent(int value) {
-		Debug.Log ("ExampleIntegerEvent ... " + value);
 	}
 
 	void Update() {
 		/*if (Input.GetKeyDown (KeyCode.Escape)) {
 			SceneManager.LoadScene ("Title");
 		}*/
+
+		if(Input.GetKeyDown(KeyCode.LeftArrow))
+		{
+			Grid.EventHub.TriggerLookLeftEvent ();
+		}
+
+		if(Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			Grid.EventHub.TriggerLookRightEvent ();
+		}
+
+		if (Input.GetKeyDown (KeyCode.F)) {
+			Grid.EventHub.TriggerMoveCameraEvent (FactoryPosition, Vector3.zero, true);
+		}
+
+		if (Input.GetKeyDown (KeyCode.V)) {
+			Grid.EventHub.TriggerMoveCameraEvent (VillagePosition, Vector3.zero, true);
+		}
+
+		if (Input.GetKeyDown (KeyCode.S)) {
+			Grid.EventHub.TriggerMoveCameraEvent (StoreRoomPosition, Vector3.zero, true);
+		}
 	}
-
-
 }
