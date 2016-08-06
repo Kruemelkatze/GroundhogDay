@@ -49,5 +49,17 @@ public class Game : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.S)) {
 			Grid.EventHub.TriggerMoveCameraEvent (StoreRoomPosition, Vector3.zero, true);
 		}
+
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Restart ();
+		}
+
+		if (Input.GetKeyDown (KeyCode.Return)) {
+			Grid.EventHub.TriggerSetSoldierNameKnown ();
+		}
+	}
+
+	public void Restart() {
+		Application.LoadLevel (0);
 	}
 }

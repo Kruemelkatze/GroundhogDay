@@ -17,6 +17,9 @@ public class EventHub : MonoBehaviour {
 	public event VoidEvent LookLeftEvent;
 	public event VoidEvent LookRightEvent;
 	public event MovementParamEvent MoveCameraEvent;
+
+	//Village
+	public event VoidEvent SetSoldierNameKnown;
 	#endregion
 
 	#region Triggers
@@ -33,6 +36,11 @@ public class EventHub : MonoBehaviour {
 	public void TriggerMoveCameraEvent(Vector3 position, Vector3 location, bool lerp = false) {
 		if(MoveCameraEvent != null)
 			MoveCameraEvent (position, location, lerp);
+	}
+
+	public void TriggerSetSoldierNameKnown() {
+		if(SetSoldierNameKnown != null)
+			SetSoldierNameKnown ();
 	}
 
 	//You get the idea on how this is done...
