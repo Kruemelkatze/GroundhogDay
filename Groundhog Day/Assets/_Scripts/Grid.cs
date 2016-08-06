@@ -57,6 +57,7 @@ public class Grid : MonoBehaviour
 	public static GameObject MainCamera;
 	public static Inventory Inventory;
 	public static Dialog Dialog;
+	public static GameObject WorldMapUI;
 
 	// when the program launches, Grid will check that all the needed elements are in place
 	// that's exactly what you do in the static constructor here:
@@ -101,6 +102,9 @@ public class Grid : MonoBehaviour
 
 		g = SafeFind ("Dialog");
 		Dialog = (Dialog)SafeComponent (g, "Dialog");
+
+		WorldMapUI = SafeFind ("WorldMapUI");
+		WorldMapUI.SetActive (false);
 	}
 
 	// this has no purpose other than for developers wondering HTF you use Grid

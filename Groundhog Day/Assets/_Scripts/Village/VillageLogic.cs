@@ -10,7 +10,6 @@ public class VillageLogic : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Grid.EventHub.SetSoldierNameKnown += OnSoldierNameKnown;
 		gameObject.GetComponent<MeshRenderer> ().material = _soldierNameKnown ? second : first;
 	}
 	
@@ -20,7 +19,6 @@ public class VillageLogic : MonoBehaviour {
 	}
 
 	void OnDestroy() {
-		Grid.EventHub.SetSoldierNameKnown -= OnSoldierNameKnown;
 
 	}
 

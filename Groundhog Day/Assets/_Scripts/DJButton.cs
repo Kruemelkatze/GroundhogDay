@@ -6,6 +6,7 @@ public class DJButton : FaceCam {
 	public Sprite Second;
 	public AudioClip AudioClipOnClick;
 
+	public bool ChangeOnce = true;
 	public bool playSuperGlitch = false;
 	private SpriteRenderer spriteRenderer;
 
@@ -14,23 +15,20 @@ public class DJButton : FaceCam {
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnMouseDown() {
 		if (AudioClipOnClick != null) {
 			Grid.SoundManager.PlaySingle (AudioClipOnClick);
 		}
-		playSuperGlitch = !playSuperGlitch;
-
-		if (playSuperGlitch) {
-			spriteRenderer.sprite = Second;
-			Grid.SoundManager.PlayMusic (Grid.SoundManager.SuperGlitchMusic);
-		} else {
-			spriteRenderer.sprite = First;
-			Grid.SoundManager.PlayMusic (Grid.SoundManager.OfficeTheme);
+		if (!ChangeOnce || ChangeOnce && !playSuperGlitch) {
+			playSuperGlitch = !playSuperGlitch;
+			if (playSuperGlitch) {
+				spriteRenderer.sprite = Second;
+				Grid.SoundManager.OfficeTheme = Grid.SoundManager.SuperGlitchMusic;
+				Grid.SoundManager.PlayMusic (Grid.SoundManager.SuperGlitchMusic);
+			} else {
+				spriteRenderer.sprite = First;
+				Grid.SoundManager.PlayMusic (Grid.SoundManager.OfficeTheme);
+			}
 		}
 	}
 }

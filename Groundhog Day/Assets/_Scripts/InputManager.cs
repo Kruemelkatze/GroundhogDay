@@ -41,10 +41,6 @@ public class InputManager : MonoBehaviour {
 				Grid.EventHub.TriggerResetEvent ();
 			}
 
-			if (Input.GetKeyDown (KeyCode.Return)) {
-				Grid.EventHub.TriggerSetSoldierNameKnown ();
-			}
-
 			if (Input.GetKeyDown (KeyCode.I)) {
 				Grid.Inventory.UpdateObject (new GameObject ("BucketEmpty"), true);
 			}

@@ -16,6 +16,8 @@ public class EventHub : MonoBehaviour {
 
 
 	#region Events
+
+	public event BoolParamEvent CloseEyesEvent;
 	public event VoidEvent ResetEvent;
 	public event VoidEvent LookLeftEvent;
 	public event VoidEvent LookRightEvent;
@@ -24,9 +26,6 @@ public class EventHub : MonoBehaviour {
 
 	//UI
 	public event GameObjectBoolParamEvent UpdateObjectEvent;
-
-	//Village
-	public event VoidEvent SetSoldierNameKnown;
 
 	#endregion
 
@@ -51,11 +50,6 @@ public class EventHub : MonoBehaviour {
 			MoveCameraEvent (position, new Vector3(0f, rotationY, 0f), lerp, rotationReset);
 	}
 
-	public void TriggerSetSoldierNameKnown() {
-		if(SetSoldierNameKnown != null)
-			SetSoldierNameKnown ();
-	}
-
 	public void TriggerResetEvent() {
 		if(ResetEvent != null)
 			ResetEvent ();
@@ -71,6 +65,12 @@ public class EventHub : MonoBehaviour {
 	{
 		if (ShowDialogUi != null)
 			ShowDialogUi (val);
+	}
+
+	public void TriggerCloseEyesEvent(bool val = true)
+	{
+		if (CloseEyesEvent != null)
+			CloseEyesEvent (val);
 	}
 
 	//You get the idea on how this is done...
