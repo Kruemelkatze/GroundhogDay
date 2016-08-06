@@ -18,6 +18,7 @@ public class Game : MonoBehaviour {
 	private CameraMovement _cameraMovement;
 
 	void Start() {
+		Debug.Log ("Game Object started");
 		_cameraObj = Grid.MainCamera;
 		_cameraMovement = _cameraObj.GetComponent<CameraMovement> ();
 	}

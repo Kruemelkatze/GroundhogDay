@@ -20,9 +20,11 @@ public class CameraMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rotationY = transform.position.y;
-		targetPosition = transform.position;
 		_camera = gameObject.GetComponent<Camera> ();
+
+		rotationY = transform.rotation.y;
+		rotationTo = Quaternion.Euler (0, rotationY, 0);
+		targetPosition = transform.position;
 
 		rotationAngleMax = rotationAngleStep;
 		rotationAngleMin = -rotationAngleStep;
