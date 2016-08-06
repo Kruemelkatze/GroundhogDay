@@ -7,12 +7,16 @@ public class Inventory : MonoBehaviour {
 	public bool Remote = false;
 	public bool Trumpet = false;
 	public bool IVBD = false;
+	public bool IVBDWithout = false;
 	public bool KeyCard = false;
 	public bool C4 = false;
+	public bool RemoteC4 = false;
 	public bool File = false;
 	public bool Rust = false;
 	public bool Paint = false;
 	public bool PaintRoller = false;
+	public bool PaintRollerWhite = false;
+	public bool PaintRollerRed = false;
 	public bool BucketEmpty = false;
 	public bool BucketDamaged = false;
 	public bool BucketAcid = false;
@@ -26,24 +30,28 @@ public class Inventory : MonoBehaviour {
 
 	//UI GameObjects
 	public GameObject RemoteObj;
-	public GameObject TrumpeUiObj;
+	public GameObject TrumpetUiObj;
 	public GameObject IVBDUiObj;
-	public GameObject KeyCarUiObj;
-	public GameObject CUiObj;
+	public GameObject IVBDWithoutUiObj;
+	public GameObject KeyCardUiObj;
+	public GameObject C4UiObj;
+	public GameObject RemoteC4UiObj;
 	public GameObject FileUiObj;
-	public GameObject RusUiObj;
-	public GameObject PainUiObj;
-	public GameObject PaintRolleUiObj;
-	public GameObject BucketEmptUiObj;
-	public GameObject BucketDamageUiObj;
-	public GameObject BucketAciUiObj;
-	public GameObject BucketDrooUiObj;
+	public GameObject RustUiObj;
+	public GameObject PaintUiObj;
+	public GameObject PaintRollerUiObj;
+	public GameObject PaintRollerRedUiObj;
+	public GameObject PaintRollerWhiteUiObj;
+	public GameObject BucketEmptyUiObj;
+	public GameObject BucketDamagedUiObj;
+	public GameObject BucketAcidUiObj;
+	public GameObject BucketDroolUiObj;
 	public GameObject BucketWhiteObj;
-	public GameObject BucketReUiObj;
-	public GameObject MiniPotioUiObj;
-	public GameObject BreaUiObj;
-	public GameObject BreadPotioUiObj;
-	public GameObject MiniSoldieUiObj;
+	public GameObject BucketRedUiObj;
+	public GameObject MiniPotionUiObj;
+	public GameObject BreadUiObj;
+	public GameObject BreadPotionUiObj;
+	public GameObject MiniSoldierUiObj;
 
 	// Use this for initialization
 	void Start () {
@@ -62,27 +70,31 @@ public class Inventory : MonoBehaviour {
 	}
 
 	public void UpdateObject(GameObject obj, bool val) {
-		string name = obj.name;
+		string name = obj.name.Replace("UI", "");
 		switch (name) {
-		case "Remote": Remote = val; break;
-		case "Trumpet": Trumpet = val; break;
-		case "IVBD": IVBD = val; break;
-		case "KeyCard": KeyCard = val; break;
-		case "C4": C4 = val; break;
-		case "File": File = val; break;
-		case "Rust": Rust = val; break;
-		case "Paint": Paint = val; break;
-		case "PaintRoller": PaintRoller = val; break;
-		case "BucketEmpty": BucketEmpty = val; break;
-		case "BucketDamaged": BucketDamaged = val; break;
-		case "BucketAcid": BucketAcid = val; break;
-		case "BucketDrool": BucketDrool = val; break;
-		case "BucketWhite": BucketWhite = val; break;
-		case "BucketRed": BucketRed = val; break;
-		case "MiniPotion": MiniPotion = val; break;
-		case "Bread": Bread = val; break;
-		case "BreadPotion": BreadPotion = val; break;
-		case "MiniSoldier": MiniSoldier	 = val; break;
+			case "Remote": Remote = val; break;
+			case "Trumpet": Trumpet = val; break;
+			case "IVBD": IVBD = val; break;
+			case "IVBDWithout": IVBDWithout = val; break;
+			case "KeyCard": KeyCard = val; break;
+			case "C4": C4 = val; break;
+			case "RemoteC4": RemoteC4 = val; break;
+			case "File": File = val; break;
+			case "Rust": Rust = val; break;
+			case "Paint": Paint = val; break;
+			case "PaintRoller": PaintRoller = val; break;
+			case "PaintRollerRed": PaintRollerRed = val; break;
+			case "PaintRollerWhite": PaintRollerWhite = val; break;
+			case "BucketEmpty": BucketEmpty = val; break;
+			case "BucketDamaged": BucketDamaged = val; break;
+			case "BucketAcid": BucketAcid = val; break;
+			case "BucketDrool": BucketDrool = val; break;
+			case "BucketWhite": BucketWhite = val; break;
+			case "BucketRed": BucketRed = val; break;
+			case "MiniPotion": MiniPotion = val; break;
+			case "Bread": Bread = val; break;
+			case "BreadPotion": BreadPotion = val; break;
+			case "MiniSoldier": MiniSoldier	 = val; break;
 		}
 
 		UpdateInventoryVisibility ();
@@ -91,45 +103,53 @@ public class Inventory : MonoBehaviour {
 	public void FetchObjects ()
 	{
 		RemoteObj = GameObject.Find("RemoteUI");
-		TrumpeUiObj = GameObject.Find("TrumpetUI");
+		TrumpetUiObj = GameObject.Find("TrumpetUI");
 		IVBDUiObj = GameObject.Find("IVBDUI");
-		KeyCarUiObj = GameObject.Find("KeyCardUI");
-		CUiObj = GameObject.Find("C4UI");
+		IVBDWithoutUiObj = GameObject.Find("IVBDWithoutUI");
+		KeyCardUiObj = GameObject.Find("KeyCardUI");
+		C4UiObj = GameObject.Find("C4UI");
+		RemoteC4UiObj = GameObject.Find("RemoteC4UI");
 		FileUiObj = GameObject.Find("FileUI");
-		RusUiObj = GameObject.Find("RustUI");
-		PainUiObj = GameObject.Find("PaintUI");
-		PaintRolleUiObj = GameObject.Find("PaintRollerUI");
-		BucketEmptUiObj = GameObject.Find("BucketEmptyUI");
-		BucketDamageUiObj = GameObject.Find("BucketDamagedUI");
-		BucketAciUiObj = GameObject.Find("BucketAcidUI");
-		BucketDrooUiObj = GameObject.Find("BucketDroolUI");
+		RustUiObj = GameObject.Find("RustUI");
+		PaintUiObj = GameObject.Find("PaintUI");
+		PaintRollerUiObj = GameObject.Find("PaintRollerUI");
+		PaintRollerRedUiObj = GameObject.Find("PaintRollerRedUI");
+		PaintRollerWhiteUiObj = GameObject.Find("PaintRollerWhiteUI");
+		BucketEmptyUiObj = GameObject.Find("BucketEmptyUI");
+		BucketDamagedUiObj = GameObject.Find("BucketDamagedUI");
+		BucketAcidUiObj = GameObject.Find("BucketAcidUI");
+		BucketDroolUiObj = GameObject.Find("BucketDroolUI");
 		BucketWhiteObj = GameObject.Find("BucketWhiteUI");
-		BucketReUiObj = GameObject.Find("BucketRedUI");
-		MiniPotioUiObj = GameObject.Find("MiniPotionUI");
-		BreaUiObj = GameObject.Find("BreadUI");
-		BreadPotioUiObj = GameObject.Find("BreadPotionUI");
-		MiniSoldieUiObj = GameObject.Find("MiniSoldierUI");
+		BucketRedUiObj = GameObject.Find("BucketRedUI");
+		MiniPotionUiObj = GameObject.Find("MiniPotionUI");
+		BreadUiObj = GameObject.Find("BreadUI");
+		BreadPotionUiObj = GameObject.Find("BreadPotionUI");
+		MiniSoldierUiObj = GameObject.Find("MiniSoldierUI");
 	}
 
 	public void UpdateInventoryVisibility() {
 		RemoteObj.SetActive(Remote);
-		TrumpeUiObj.SetActive(Trumpet);
+		TrumpetUiObj.SetActive(Trumpet);
 		IVBDUiObj.SetActive(IVBD);
-		KeyCarUiObj.SetActive(KeyCard);
-		CUiObj.SetActive(C4);
+		IVBDWithoutUiObj.SetActive(IVBDWithout);
+		KeyCardUiObj.SetActive(KeyCard);
+		C4UiObj.SetActive(C4);
+		RemoteC4UiObj.SetActive(RemoteC4);
 		FileUiObj.SetActive(File);
-		RusUiObj.SetActive(Rust);
-		PainUiObj.SetActive(Paint);
-		PaintRolleUiObj.SetActive(PaintRoller);
-		BucketEmptUiObj.SetActive(BucketEmpty);
-		BucketDamageUiObj.SetActive(BucketDamaged);
-		BucketAciUiObj.SetActive(BucketAcid);
-		BucketDrooUiObj.SetActive(BucketDrool);
+		RustUiObj.SetActive(Rust);
+		PaintUiObj.SetActive(Paint);
+		PaintRollerUiObj.SetActive(PaintRoller);
+		PaintRollerRedUiObj.SetActive(PaintRollerRed);
+		PaintRollerWhiteUiObj.SetActive(PaintRollerWhite);
+		BucketEmptyUiObj.SetActive(BucketEmpty);
+		BucketDamagedUiObj.SetActive(BucketDamaged);
+		BucketAcidUiObj.SetActive(BucketAcid);
+		BucketDroolUiObj.SetActive(BucketDrool);
 		BucketWhiteObj.SetActive(BucketWhite);
-		BucketReUiObj.SetActive(BucketRed);
-		MiniPotioUiObj.SetActive(MiniPotion);
-		BreaUiObj.SetActive(Bread);
-		BreadPotioUiObj.SetActive(BreadPotion);
-		MiniSoldieUiObj.SetActive(MiniSoldier);
+		BucketRedUiObj.SetActive(BucketRed);
+		MiniPotionUiObj.SetActive(MiniPotion);
+		BreadUiObj.SetActive(Bread);
+		BreadPotionUiObj.SetActive(BreadPotion);
+		MiniSoldierUiObj.SetActive(MiniSoldier);
 	}
 }

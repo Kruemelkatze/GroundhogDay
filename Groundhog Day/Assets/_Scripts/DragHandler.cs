@@ -20,7 +20,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		startPosition = transform.position;
 		startParent = transform.parent;
 
-		//GetComponent<CanvasGroup>().blocksRaycasts = false;
+		GetComponent<CanvasGroup>().blocksRaycasts = false;
 		//item.GetComponent<LayoutElement>().ignoreLayout = true;
 		item.transform.SetParent(item.transform.parent.parent);
 	}
@@ -37,7 +37,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		item = null;
 		transform.parent = startParent;
 		transform.position = startPosition;
-		//GetComponent<CanvasGroup>().blocksRaycasts = true;
+		GetComponent<CanvasGroup>().blocksRaycasts = true;
 		//item.GetComponent<LayoutElement>().ignoreLayout = false;
 	}
 
