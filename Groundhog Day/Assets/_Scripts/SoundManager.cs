@@ -5,11 +5,20 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource[] efxSource;
 	public AudioSource loopMusic;
 
+	public AudioClip OnCombinationSound;
+	public AudioClip OnNotPossibleSound;
+	public AudioClip OnClickSound;
+
 	public AudioClip defaultTheme;
 	public float defaultThemeVolume = 1;
 
 	public AudioClip currentTheme;
 	public float currentThemeVolume = 1;
+
+	public AudioClip VillageTheme;
+	public AudioClip FactoryTheme;
+	public AudioClip OfficeTheme;
+	public AudioClip SuperGlitchMusic;
 
 	private int nextSourceToUse = 0;
 	public float lowPitchRange = .95f;
@@ -55,9 +64,6 @@ public class SoundManager : MonoBehaviour {
 		efxSource [index].volume = volume;
 		efxSource[index].Play();
 	}
-
-	//Event Handlers
-
 
 	//Music controller
 	public void SetCurrentTheme(AudioClip clip, float volume = 1) {
