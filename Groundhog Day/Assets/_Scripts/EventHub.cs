@@ -8,16 +8,19 @@ public class EventHub : MonoBehaviour {
 	public delegate void IntegerParamEvent (int value);
 	public delegate void GameObjectParamEvent(GameObject obj);
 	public delegate void GameObjectIntegerParamEvent(GameObject enemy, int value);
+	public delegate void GameObjectBoolParamEvent(GameObject enemy, bool value);
 	public delegate void MovementParamEvent(Vector3 position, Vector3 location, bool lerp = false, bool rotationReset = false);
 
 	#endregion
 
 
 	#region Events
+	public event VoidEvent ResetEvent;
 	public event VoidEvent LookLeftEvent;
 	public event VoidEvent LookRightEvent;
 	public event MovementParamEvent MoveCameraEvent;
 
+	public event GameObjectBoolParamEvent UpdateObjectEvent;
 	//Village
 	public event VoidEvent SetSoldierNameKnown;
 	#endregion
@@ -46,6 +49,17 @@ public class EventHub : MonoBehaviour {
 	public void TriggerSetSoldierNameKnown() {
 		if(SetSoldierNameKnown != null)
 			SetSoldierNameKnown ();
+	}
+
+	public void TriggerResetEvent() {
+		if(ResetEvent != null)
+			ResetEvent ();
+	}
+
+	public void TriggerUpdateObjectEvent(GameObject obj, bool val)
+	{
+		if (UpdateObjectEvent != null)
+			UpdateObjectEvent (obj, val);
 	}
 
 	//You get the idea on how this is done...
