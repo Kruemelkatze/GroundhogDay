@@ -44,15 +44,21 @@ public class CameraMovement : MonoBehaviour {
 		Grid.EventHub.MoveCameraEvent -= MoveToPosition;
 	}
 
-	public void MoveToPosition(Vector3 position, Vector3 rotation, bool lerp = false) {
+	public void MoveToPosition(Vector3 position, Vector3 rotation, bool lerp = false, bool resetRotation = false) {
 		rotationY = rotation.y;
 		rotationTo = Quaternion.Euler(0.0f, rotationY, 0.0f);
+
+		if (resetRotation) {
+			rotationAngleMax = rotationY + rotationAngleStep;
+			rotationAngleMin = rotationY -rotationAngleStep;
+		}
 
 		targetPosition = position;
 
 		if (!lerp) {
 			transform.position = position;
-			transform.rotation = Quaternion.LookRotation (rotation);
+			transform.rotation = Quaternion.Euler(rotation);
+			rotationTo = transform.rotation;
 		}
 	}
 

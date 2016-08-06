@@ -8,7 +8,7 @@ public class EventHub : MonoBehaviour {
 	public delegate void IntegerParamEvent (int value);
 	public delegate void GameObjectParamEvent(GameObject obj);
 	public delegate void GameObjectIntegerParamEvent(GameObject enemy, int value);
-	public delegate void MovementParamEvent(Vector3 position, Vector3 location, bool lerp = false);
+	public delegate void MovementParamEvent(Vector3 position, Vector3 location, bool lerp = false, bool rotationReset = false);
 
 	#endregion
 
@@ -33,9 +33,14 @@ public class EventHub : MonoBehaviour {
 			LookRightEvent ();
 	}
 
-	public void TriggerMoveCameraEvent(Vector3 position, Vector3 location, bool lerp = false) {
+	public void TriggerMoveCameraEvent(Vector3 position, Vector3 rotation, bool lerp = false, bool rotationReset = false) {
 		if(MoveCameraEvent != null)
-			MoveCameraEvent (position, location, lerp);
+			MoveCameraEvent (position, rotation, lerp, rotationReset);
+	}
+
+	public void TriggerMoveCameraEvent(Vector3 position, float rotationY, bool lerp = false, bool rotationReset = false) {
+		if(MoveCameraEvent != null)
+			MoveCameraEvent (position, new Vector3(0f, rotationY, 0f), lerp, rotationReset);
 	}
 
 	public void TriggerSetSoldierNameKnown() {

@@ -9,6 +9,9 @@ public class Game : MonoBehaviour {
 	public Vector3 FactoryPosition;
 	public Vector3 VillagePosition;
 	public Vector3 StoreRoomPosition;
+	public float FactoryRotation;
+	public float VillageRotation;
+	public float StoreRoomRotation;
 
 	//Private Fields
 	private GameObject _cameraObj;
@@ -39,15 +42,15 @@ public class Game : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.F)) {
-			Grid.EventHub.TriggerMoveCameraEvent (FactoryPosition, Vector3.zero, true);
+			Grid.EventHub.TriggerMoveCameraEvent (FactoryPosition, FactoryRotation, false, true);
 		}
 
 		if (Input.GetKeyDown (KeyCode.V)) {
-			Grid.EventHub.TriggerMoveCameraEvent (VillagePosition, Vector3.zero, true);
+			Grid.EventHub.TriggerMoveCameraEvent (VillagePosition, VillageRotation, false, true);
 		}
 
 		if (Input.GetKeyDown (KeyCode.S)) {
-			Grid.EventHub.TriggerMoveCameraEvent (StoreRoomPosition, Vector3.zero, true);
+			Grid.EventHub.TriggerMoveCameraEvent (StoreRoomPosition, StoreRoomRotation, false, true);
 		}
 
 		if (Input.GetKeyDown (KeyCode.Escape)) {
@@ -60,6 +63,6 @@ public class Game : MonoBehaviour {
 	}
 
 	public void Restart() {
-		Application.LoadLevel (0);
+		SceneManager.LoadScene (0);
 	}
 }
