@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class InputManager : MonoBehaviour {
+	bool dialog = false;
 
 	// Use this for initialization
 	void Start () {
@@ -43,6 +44,11 @@ public class InputManager : MonoBehaviour {
 
 			if (Input.GetKeyDown (KeyCode.I)) {
 				Grid.Inventory.UpdateObject (new GameObject ("BucketEmpty"), true);
+			}
+
+			if (Input.GetKeyDown (KeyCode.D)) {
+				dialog = !dialog;
+				Grid.EventHub.TriggerShowDialogUi (dialog);
 			}
 		}
 	}

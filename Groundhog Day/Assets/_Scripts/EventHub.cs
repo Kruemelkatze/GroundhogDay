@@ -6,6 +6,7 @@ public class EventHub : MonoBehaviour {
 	#region Event delegates
 	public delegate void VoidEvent();
 	public delegate void IntegerParamEvent (int value);
+	public delegate void BoolParamEvent (bool value);
 	public delegate void GameObjectParamEvent(GameObject obj);
 	public delegate void GameObjectIntegerParamEvent(GameObject enemy, int value);
 	public delegate void GameObjectBoolParamEvent(GameObject enemy, bool value);
@@ -19,10 +20,14 @@ public class EventHub : MonoBehaviour {
 	public event VoidEvent LookLeftEvent;
 	public event VoidEvent LookRightEvent;
 	public event MovementParamEvent MoveCameraEvent;
+	public event BoolParamEvent ShowDialogUi;
 
+	//UI
 	public event GameObjectBoolParamEvent UpdateObjectEvent;
+
 	//Village
 	public event VoidEvent SetSoldierNameKnown;
+
 	#endregion
 
 	#region Triggers
@@ -60,6 +65,12 @@ public class EventHub : MonoBehaviour {
 	{
 		if (UpdateObjectEvent != null)
 			UpdateObjectEvent (obj, val);
+	}
+
+	public void TriggerShowDialogUi(bool val)
+	{
+		if (ShowDialogUi != null)
+			ShowDialogUi (val);
 	}
 
 	//You get the idea on how this is done...
