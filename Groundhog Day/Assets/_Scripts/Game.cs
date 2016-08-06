@@ -13,6 +13,8 @@ public class Game : MonoBehaviour {
 	public float VillageRotation;
 	public float StoreRoomRotation;
 
+	public bool DEBUG = true;
+
 	//Private Fields
 	private GameObject _cameraObj;
 	private CameraMovement _cameraMovement;
@@ -36,6 +38,6 @@ public class Game : MonoBehaviour {
 	}
 
 	public void Restart() {
-		Grid.EventHub.TriggerResetEvent ();
+		SceneManager.LoadScene (0);
 	}
 }

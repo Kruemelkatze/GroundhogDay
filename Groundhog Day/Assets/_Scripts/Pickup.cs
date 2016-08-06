@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Pickup : MonoBehaviour {
-	
-	public void OnMouseOver(){
-		if(Input.GetMouseButtonDown(0)){
-			OnClick ();
-		}
+public class Pickup : MonoBehaviour {
+
+	void OnMouseDown() {
+		Debug.Log("Clicked on "+gameObject.name); 	
+		Grid.EventHub.TriggerUpdateObjectEvent (gameObject, true);
+		gameObject.SetActive (false);
 	}
 
-	public abstract void OnClick ();
+	void Update() {
+		transform.LookAt(-Camera.main.transform.position, Vector3.up);
+	}
 }

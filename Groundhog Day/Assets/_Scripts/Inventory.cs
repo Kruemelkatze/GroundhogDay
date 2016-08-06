@@ -49,16 +49,19 @@ public class Inventory : MonoBehaviour {
 	void Start () {
 		FetchObjects ();
 		UpdateInventoryVisibility ();
+
+		Grid.EventHub.UpdateObjectEvent += UpdateObject;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.I)) {
-			UpdateObject (new GameObject("Remote"), true);
-		}
 	}
 
-	void UpdateObject(GameObject obj, bool val) {
+	void OnDestroy() {
+		Grid.EventHub.UpdateObjectEvent -= UpdateObject;
+	}
+
+	public void UpdateObject(GameObject obj, bool val) {
 		string name = obj.name;
 		switch (name) {
 		case "Remote": Remote = val; break;
@@ -85,7 +88,7 @@ public class Inventory : MonoBehaviour {
 		UpdateInventoryVisibility ();
 	}
 
-	void FetchObjects ()
+	public void FetchObjects ()
 	{
 		RemoteObj = GameObject.Find("RemoteUI");
 		TrumpeUiObj = GameObject.Find("TrumpetUI");

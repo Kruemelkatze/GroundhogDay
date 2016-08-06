@@ -20,24 +20,30 @@ public class InputManager : MonoBehaviour {
 			Grid.EventHub.TriggerLookRightEvent ();
 		}
 
-		if (Input.GetKeyDown (KeyCode.F)) {
-			Grid.EventHub.TriggerMoveCameraEvent (Grid.GameLogic.FactoryPosition, Grid.GameLogic.FactoryRotation, false, true);
-		}
+		if (Grid.GameLogic.DEBUG) {
+			if (Input.GetKeyDown (KeyCode.F)) {
+				Grid.EventHub.TriggerMoveCameraEvent (Grid.GameLogic.FactoryPosition, Grid.GameLogic.FactoryRotation, false, true);
+			}
 
-		if (Input.GetKeyDown (KeyCode.V)) {
-			Grid.EventHub.TriggerMoveCameraEvent (Grid.GameLogic.VillagePosition, Grid.GameLogic.VillageRotation, false, true);
-		}
+			if (Input.GetKeyDown (KeyCode.V)) {
+				Grid.EventHub.TriggerMoveCameraEvent (Grid.GameLogic.VillagePosition, Grid.GameLogic.VillageRotation, false, true);
+			}
 
-		if (Input.GetKeyDown (KeyCode.S)) {
-			Grid.EventHub.TriggerMoveCameraEvent (Grid.GameLogic.StoreRoomPosition, Grid.GameLogic.StoreRoomRotation, false, true);
-		}
+			if (Input.GetKeyDown (KeyCode.S)) {
+				Grid.EventHub.TriggerMoveCameraEvent (Grid.GameLogic.StoreRoomPosition, Grid.GameLogic.StoreRoomRotation, false, true);
+			}
 
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			Grid.EventHub.TriggerResetEvent ();
-		}
+			if (Input.GetKeyDown (KeyCode.Escape)) {
+				Grid.EventHub.TriggerResetEvent ();
+			}
 
-		if (Input.GetKeyDown (KeyCode.Return)) {
-			Grid.EventHub.TriggerSetSoldierNameKnown ();
+			if (Input.GetKeyDown (KeyCode.Return)) {
+				Grid.EventHub.TriggerSetSoldierNameKnown ();
+			}
+
+			if (Input.GetKeyDown (KeyCode.I)) {
+				Grid.Inventory.UpdateObject (new GameObject ("Remote"), true);
+			}
 		}
 	}
 }
