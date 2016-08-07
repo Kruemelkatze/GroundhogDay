@@ -76,6 +76,8 @@ public class Game : MonoBehaviour {
 
 		Grid.EventHub.ResetEvent += Restart;
 		ToVillage ();
+
+		Invoke ("ToStartPosition", 1);
 	}
 
 	void OnDestroy() {
@@ -107,6 +109,10 @@ public class Game : MonoBehaviour {
 		HansBigInOffice.SetActive (HansBigInOfficeVisible);
 		RobotFree.SetActive (RobotFreeVisible);
 		HansGross.SetActive (HansGrossVisible);
+	}
+
+	public void ToStartPosition() {
+		Grid.EventHub.TriggerMoveCameraEvent (Grid.GameLogic.VillagePosition, Grid.GameLogic.VillageRotation, false, true);
 	}
 
 	public void CheckWin() {

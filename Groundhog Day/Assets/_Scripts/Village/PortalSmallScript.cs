@@ -44,6 +44,7 @@ public class PortalSmallScript : InteractiveWorldObject {
 	void MiniHansToOffice ()
 	{
 		Grid.GameLogic.HansInOfficeVisible = true;
+		Grid.GameLogic.HansGrossVisible = false;
 		Grid.GameLogic.UpdateVisibilities ();
 		Grid.Inventory.MiniSoldier = false;
 		Grid.Inventory.UpdateInventoryVisibility ();

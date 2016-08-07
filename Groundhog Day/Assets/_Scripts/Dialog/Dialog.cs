@@ -34,6 +34,8 @@ public class Dialog : MonoBehaviour {
     public AudioClip Gnome1;
     public AudioClip Gnome2;
     public AudioClip Gnome3;
+	public AudioClip Gnome4;
+	public AudioClip Gnome5;
 
     // Use this for initialization
     void Start () {
@@ -80,10 +82,10 @@ public class Dialog : MonoBehaviour {
         {
             switch (_simpleTextCounter)
             {
-                case 0: TextProgression("*Achos! Getthät rus away fromme... *sniffle*", null, "That rusty thing over there?"); _simpleTextCounter++; break;
-                case 1: TextProgression("*Ewww, izzat that old machine? Thät things gross... ", null, "Okay?"); _simpleTextCounter++; break;
-                case 2: TextProgression("Wait... wait wait wait... wait...    wait... ...", null, "..."); _simpleTextCounter++; break;
-                case 3: TextProgression("didjoo say new machine? You gotta gimme outtä here so I can work ätthat new machine!", null, "I'll try!"); _simpleTextCounter++; break;
+			case 0: TextProgression("*Achos! Izzat rust? Getthät rus away fromme... *sniffle*", null, "That rusty thing over there?"); Grid.SoundManager.PlaySingle(Gnome2, 2); _simpleTextCounter++; break;
+			case 1: TextProgression("*Ewww, izzat that old machine? Thät things gross... ", null, "Okay?"); Grid.SoundManager.PlaySingle(Gnome3, 2); _simpleTextCounter++; break;
+			case 2: TextProgression("Wait... wait wait wait... wait...    wait... ...", null, "..."); Grid.SoundManager.PlaySingle(Gnome4, 2); _simpleTextCounter++; break;
+			case 3: TextProgression("didjoo say new machine? You gotta gimme outtä here so I can work ätthat new machine!", null, "I'll try!"); Grid.SoundManager.PlaySingle(Gnome5, 2); _simpleTextCounter++; break;
                 case 4: _dialogUi.SetActive(false); break;
             }
         }

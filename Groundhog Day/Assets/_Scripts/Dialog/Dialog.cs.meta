@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: acf9e775dfab5eb4b8afb54485f30d3a
-timeCreated: 1470568041
+timeCreated: 1470581444
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -16,9 +16,11 @@ MonoImporter:
   - HF9: {fileID: 8300000, guid: 7e4f4192e544adf47bdce3e59100b095, type: 3}
   - MECH1: {fileID: 8300000, guid: 2bad8eb14fb433e4e8ac074d6608722d, type: 3}
   - MECH2: {fileID: 8300000, guid: 1ad68777ba35342449a346649bb0db30, type: 3}
-  - Gnome1: {instanceID: 0}
-  - Gnome2: {instanceID: 0}
-  - Gnome3: {instanceID: 0}
+  - Gnome1: {fileID: 8300000, guid: 374c6398180fad54a8c254b5d379b664, type: 3}
+  - Gnome2: {fileID: 8300000, guid: 1ee619a5bb698e849a9da4efc68d6942, type: 3}
+  - Gnome3: {fileID: 8300000, guid: cab7d8ee6e910da4488f4f1719169048, type: 3}
+  - Gnome4: {fileID: 8300000, guid: 5966e1deccd89c54db4fd9e9f5ed2a68, type: 3}
+  - Gnome5: {fileID: 8300000, guid: 8abd31fcfd5f16540aa9d09001826d80, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
