@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public abstract class InteractiveWorldObject : FaceCam {
 	public AudioClip AudioClipOnClick;
 
-	void OnMouseDown() {
+	public void OnMouseDown() {
 		if (AudioClipOnClick != null) {
 			Grid.SoundManager.PlaySingle (AudioClipOnClick);
 		}

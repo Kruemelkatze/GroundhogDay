@@ -8,8 +8,11 @@ public class WellScript : InteractiveWorldObject {
 	{
 		switch (obj.name) {
 			case "BucketEmptyUI": 
-				FillBucket ();
+				FillNormalBucket ();
 				return true;
+			case "BucketDroolUI": 
+				FillDrooledBucket ();
+			return true;
 			default:
 				return false;
 		}
@@ -18,12 +21,15 @@ public class WellScript : InteractiveWorldObject {
 
 	#endregion
 
-	void FillBucket ()
+	void FillNormalBucket ()
 	{
 		Grid.Inventory.BucketEmpty = false;
-		Grid.Inventory.BucketAcid = true;
+		Grid.Inventory.BucketDamaged = true;
 	}
 
-
-
+	void FillDrooledBucket ()
+	{
+		Grid.Inventory.BucketDrool = false;
+		Grid.Inventory.BucketAcid = true;
+	}
 }

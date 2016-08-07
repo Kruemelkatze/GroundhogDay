@@ -68,9 +68,12 @@ public class Inventory : MonoBehaviour {
 	void OnDestroy() {
 		Grid.EventHub.UpdateObjectEvent -= UpdateObject;
 	}
-
 	public void UpdateObject(GameObject obj, bool val) {
 		string name = obj.name.Replace("UI", "");
+		UpdateObject (name, val);
+	}
+	public void UpdateObject(string name, bool val) {
+
 		switch (name) {
 			case "Remote": Remote = val; break;
 			case "Trumpet": Trumpet = val; break;
