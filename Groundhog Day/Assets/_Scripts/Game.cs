@@ -14,6 +14,19 @@ public class Game : MonoBehaviour {
 	public float VillageRotation;
 	public float StoreRoomRotation;
 
+	public bool HansiSatisfied = false;
+	public bool RobotSatisfied = false;
+	public bool GnomeSatisfied = false;
+
+	public GameObject RobotFree;
+	public GameObject HansBigInOffice;
+	public GameObject GnomeFree;
+	public bool RobotFreeVisible = false;
+	public bool HansBigInOfficeVisible = false;
+	public bool GnomeFreeVisible = false;
+
+	public GameObject HansGross;
+	public bool HansGrossVisible= true;
 
 	public GameObject PortalBig;
 	public GameObject PortalSmall;
@@ -21,7 +34,6 @@ public class Game : MonoBehaviour {
 	public bool PortalBigVisible = false;
 	public bool PortalSmallVisible = true;
 	public bool HansInOfficeVisible = false;
-
 	public GameObject MachineOldEmpty;
 	public GameObject MachineOldFull;
 	public bool MachineOldEmptyVisible = true;
@@ -31,6 +43,8 @@ public class Game : MonoBehaviour {
 	public GameObject MachineNewDead;
 	public bool MachineNewOkVisible = true;
 	public bool MachineNewDeadVisible = false;
+
+	public GameObject WinUI;
 
 	public bool DEBUG = true;
 
@@ -47,6 +61,10 @@ public class Game : MonoBehaviour {
 		MachineNewOk = GameObject.Find("NewMachineOK");
 		MachineNewDead = GameObject.Find("NewMachineDead");
 
+		RobotFree = GameObject.Find("RobotFree");
+		HansBigInOffice = GameObject.Find("HansBigInOffice");
+		GnomeFree = GameObject.Find("GnomeFree");
+		HansGross = GameObject.Find("HansGross");
 
 		Debug.Log ("Game Object started");
 		_cameraObj = Grid.MainCamera;
@@ -85,5 +103,16 @@ public class Game : MonoBehaviour {
 		MachineOldFull.SetActive (MachineOldFullVisible);
 		MachineNewOk.SetActive (MachineNewOkVisible);
 		MachineNewDead.SetActive (MachineNewDeadVisible);
+		GnomeFree.SetActive (GnomeFreeVisible);
+		HansBigInOffice.SetActive (HansBigInOfficeVisible);
+		RobotFree.SetActive (RobotFreeVisible);
+		HansGross.SetActive (HansGrossVisible);
+	}
+
+	public void CheckWin() {
+		if (RobotSatisfied && HansiSatisfied && GnomeSatisfied && WinUI != null) {
+			Debug.Log ("WIN");
+			WinUI.SetActive (true);
+		}
 	}
 }

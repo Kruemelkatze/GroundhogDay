@@ -55,5 +55,9 @@ public class GnomeScript : MonoBehaviour {
 
 	void Free() {
 		gameObject.SetActive (false);
+		Grid.GameLogic.GnomeFreeVisible = true;
+		Grid.GameLogic.UpdateVisibilities ();
+		Grid.GameLogic.GnomeSatisfied = true;
+		Grid.GameLogic.CheckWin ();
 	}
 }

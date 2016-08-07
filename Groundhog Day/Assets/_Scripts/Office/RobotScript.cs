@@ -26,6 +26,11 @@ public class RobotScript : InteractiveWorldObject {
 	#endregion
 
 	void EatBread() {
+		gameObject.SetActive (false);
 		Grid.Inventory.IVBD = false;
+		Grid.GameLogic.RobotSatisfied = true;
+		Grid.GameLogic.RobotFreeVisible = true;
+		Grid.GameLogic.UpdateVisibilities ();
+		Grid.GameLogic.CheckWin ();
 	}
 }

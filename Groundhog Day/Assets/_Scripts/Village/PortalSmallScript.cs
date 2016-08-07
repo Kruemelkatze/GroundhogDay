@@ -30,9 +30,15 @@ public class PortalSmallScript : InteractiveWorldObject {
 	public void MakePortalBig() {
 		Grid.GameLogic.PortalSmallVisible = false;
 		Grid.GameLogic.PortalBigVisible = true;
-		Grid.GameLogic.UpdateVisibilities ();
 		Grid.Inventory.PaintRollerRed = false;
 		Grid.Inventory.UpdateInventoryVisibility ();
+
+		Grid.GameLogic.HansiSatisfied= true;
+		Grid.GameLogic.HansBigInOfficeVisible = true;
+		Grid.GameLogic.HansGrossVisible = false;
+		Grid.GameLogic.UpdateVisibilities ();
+		Grid.GameLogic.CheckWin ();
+
 	}
 
 	void MiniHansToOffice ()
@@ -41,6 +47,9 @@ public class PortalSmallScript : InteractiveWorldObject {
 		Grid.GameLogic.UpdateVisibilities ();
 		Grid.Inventory.MiniSoldier = false;
 		Grid.Inventory.UpdateInventoryVisibility ();
+		Grid.GameLogic.HansiSatisfied= true;
+		Grid.GameLogic.CheckWin ();
+
 	}
 
 	public void ToOffice() {

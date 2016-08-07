@@ -29,6 +29,9 @@ public class PortalBigScript : InteractiveWorldObject {
 		Grid.GameLogic.UpdateVisibilities ();
 		Grid.Inventory.MiniSoldier = false;
 		Grid.Inventory.UpdateInventoryVisibility ();
+		Grid.GameLogic.HansiSatisfied= true;
+		Grid.GameLogic.CheckWin ();
+
 	}
 
 	public void ToOffice() {

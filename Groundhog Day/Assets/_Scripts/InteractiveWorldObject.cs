@@ -22,6 +22,7 @@ public abstract class InteractiveWorldObject : FaceCam {
 				return;
 
 			bool itemHandled = ItemDropped (obj);
+
 			if (itemHandled) {
 				Grid.Inventory.UpdateInventoryVisibility ();
 			} else if(Grid.GameLogic.AudioClipOnNotPossible != null) {
