@@ -26,7 +26,6 @@ public class Dialog : MonoBehaviour {
 		_buttonRight = GameObject.Find ("ButtonRight");
 		_buttonRightText = GameObject.Find ("RightButtonText").GetComponent<Text> ();
 		_dialogText = GameObject.Find ("DialogText").GetComponent<Text> ();
-		_titleText = GameObject.Find ("DialogTitle").GetComponent<Text> ();
 
 		ShowDialogUi (false);
 		Grid.EventHub.ShowDialogUi += ShowDialogUi;
@@ -51,7 +50,7 @@ public class Dialog : MonoBehaviour {
                     {
                         case 0: TextProgression("Yes, the one and only! Will you help me?", "Yes.", "No."); _simpleTextCounter=3; _sameday = false; break;
                         case 3: TextProgression("It all started when I was shooting the machines in Dr. EvilGenius' laboratory. Suddenly a portal opened and brought me to this awful place.", "*let him continue*", null); _simpleTextCounter++; break;
-                        case 4: TextProgression("I tried to shoot the portal... but that made it smaller so I threw the robot out of anger.?", "I'll help you. But I need your keycard.", null); _simpleTextCounter++; break;    
+                        case 4: TextProgression("I tried to shoot the portal... but that made it smaller so I threw the robot out of anger.", "I'll help you. But I need your keycard.", null); _simpleTextCounter++; break;    
                         case 5: _dialogUi.SetActive(false); Grid.Inventory.KeyCard = true; Grid.Inventory.UpdateInventoryVisibility(); _nameStatus = 1; _sameday = true; break;
                     }
               }
@@ -156,6 +155,9 @@ public class Dialog : MonoBehaviour {
 
     public void startDialogGnome()
     {
+		if (IsDialogActive ())
+			return;
+		
         _gnomeDialog = true;
         _mechanoidDialog = false;
         _VANSHATTERDialog = false;
@@ -164,6 +166,9 @@ public class Dialog : MonoBehaviour {
 
     public void startDialogMechanoid()
     {
+		if (IsDialogActive ())
+			return;
+		
         _gnomeDialog = false;
         _mechanoidDialog = true;
         _VANSHATTERDialog = false;
@@ -172,9 +177,16 @@ public class Dialog : MonoBehaviour {
 
     public void startDialogVanShatter()
     {
+		if (IsDialogActive ())
+			return;
+		
         _gnomeDialog = false;
         _mechanoidDialog = false;
         _VANSHATTERDialog = true;
         ShowDialogUi(true);
     }
+
+	public bool IsDialogActive() {
+		return _dialogUi.activeInHierarchy;
+	}
 }
