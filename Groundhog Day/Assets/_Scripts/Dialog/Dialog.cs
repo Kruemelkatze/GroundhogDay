@@ -15,7 +15,8 @@ public class Dialog : MonoBehaviour {
     private bool _mechanoidDialog = true;
     private bool _VANSHATTERDialog = true;
     private int _simpleTextCounter = 0;
-    private int _nameStatus = 0;
+    private static int _nameStatus = 0;
+    private bool _sameday = false;
 
     // Use this for initialization
     void Start () {
@@ -42,9 +43,20 @@ public class Dialog : MonoBehaviour {
 
 	public void OnLeftButtonClick ()
 	{
-		Debug.Log ("Yep, Left");
-        _buttonLeftText.text = "AAAAAAA";
-	}
+        if (_VANSHATTERDialog)
+        {
+            if (_nameStatus == 1)
+            {
+                switch (_simpleTextCounter)
+                    {
+                        case 0: TextProgression("Yes, the one and only! Will you help me?", "Yes.", "No."); _simpleTextCounter=3; _sameday = false; break;
+                        case 3: TextProgression("It all started when I was shooting the machines in Dr. EvilGenius' laboratory. Suddenly a portal opened and brought me to this awful place.", "*let him continue*", null); _simpleTextCounter++; break;
+                        case 4: TextProgression("I tried to shoot the portal... but that made it smaller so I threw the robot out of anger.?", "I'll help you. But I need your keycard.", null); _simpleTextCounter++; break;    
+                        case 5: _dialogUi.SetActive(false); Grid.Inventory.KeyCard = true; Grid.Inventory.UpdateInventoryVisibility(); _nameStatus = 1; _sameday = true; break;
+                    }
+              }
+        }
+    }
 
 	public void OnRightButtonClick ()
 	{
@@ -71,7 +83,38 @@ public class Dialog : MonoBehaviour {
         }
         if (_VANSHATTERDialog)
         {
-           
+            if (_nameStatus == 0)
+            {
+                switch (_simpleTextCounter)
+                {
+                    case 0: TextProgression("I am trapped in this silly place and there are things that need shooting!", null, "Who are you?"); _simpleTextCounter++; break;
+                    case 1: TextProgression("You have never heard of me?", null, "No, I have not."); _simpleTextCounter++; break;
+                    case 2: TextProgression("Certainly you know the legend of how I destroyed Doctor Badguy's fortress with only my smallest gun?", null, "No."); _simpleTextCounter++; break;
+                    case 3: TextProgression("No? Well then, Hans-Friedrich VanShatter will wait for help somebody who actually appreciates him.", null, "Okay."); _simpleTextCounter++; break;
+                    case 4: TextProgression("Now go away before I shoot you!", null, "*leave him be*"); _simpleTextCounter++; break;
+                    case 5: _dialogUi.SetActive(false); _nameStatus = 1; _sameday = true; break;
+                }
+            }
+            if (_nameStatus == 1)
+            {
+                if (_sameday)
+                {
+                    _dialogUi.SetActive(false);
+                }
+                else
+                {
+                    switch (_simpleTextCounter)
+                    {
+                        case 0: TextProgression("I am trapped in this silly place and there are things that need shooting!", null, "Who are you?"); _simpleTextCounter++; break;
+                        case 1: TextProgression("You have never heard of me?", null, "No, I have not."); _simpleTextCounter++; break;
+                        case 2: TextProgression("Certainly you know the legend of how I destroyed Doctor Badguy's fortress with only my smallest gun?", null, "No."); _simpleTextCounter++; break;
+                        case 3: TextProgression("No? Well then, Hans-Friedrich VanShatter will wait for help somebody who actually appreciates him.", null, "Okay."); _simpleTextCounter++; break;
+                        case 4: TextProgression("Now go away before I shoot you!", null, "*leave him be*"); _simpleTextCounter++; break;
+                        case 5: _dialogUi.SetActive(false); _nameStatus = 1; _sameday = true; break;
+                    }
+                }
+            }
+
         }
     }
 
@@ -89,7 +132,8 @@ public class Dialog : MonoBehaviour {
             if (_VANSHATTERDialog)
             {
                 if (_nameStatus == 0) {TextProgression("*Hey you theah! You must help me!", null, "Yes?");}
-                if (_nameStatus == 1) {TextProgression("*Hey you theah! You must help me!", "Yes, Hans-Friedrich VanShatter?", "Yes?"); }
+                if (_nameStatus == 1 && _sameday == true)  {TextProgression("Now go away before I shoot you!", null, "*leave him be*"); }
+                if (_nameStatus == 1 && _sameday == false) {TextProgression("*Hey you theah! You must help me!", "Yes, Hans-Friedrich VanShatter?", "Yes?"); }
 
             }
             if (_mechanoidDialog)
