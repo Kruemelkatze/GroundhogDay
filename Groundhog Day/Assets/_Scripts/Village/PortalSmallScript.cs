@@ -5,7 +5,8 @@ public class PortalSmallScript : InteractiveWorldObject {
 
 	void OnMouseDown() {
 		base.OnMouseDown ();
-		ToOffice ();
+		if(!Grid.Dialog.IsDialogActive())
+			ToOffice ();
 	}
 
 	#region implemented abstract members of InteractiveWorldObject

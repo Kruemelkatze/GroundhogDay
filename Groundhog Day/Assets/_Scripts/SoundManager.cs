@@ -66,7 +66,7 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	//Music controller
-	public void SetCurrentTheme(AudioClip clip, float volume = 1) {
+	public void SetCurrentTheme(AudioClip clip, float volume = 0.3f) {
 		bool sameTheme = clip.name.Equals (currentTheme.name);
 
 		currentThemeVolume = volume;
@@ -85,7 +85,7 @@ public class SoundManager : MonoBehaviour {
 		PlayMusic (currentTheme, currentThemeVolume);
 	}
 
-	public void PlayMusic(AudioClip clip, float volume = 1) {
+	public void PlayMusic(AudioClip clip, float volume = 0.3f) {
 		loopMusic.Stop ();
 		loopMusic.loop = true;
 		loopMusic.clip = clip;

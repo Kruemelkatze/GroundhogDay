@@ -36,7 +36,8 @@ public class WorldMap : MonoBehaviour {
 	}
 
 	public void ShowWorldMap() {
-		Grid.WorldMapUI.SetActive (true);
+		if(!Grid.Dialog.IsDialogActive())			
+			Grid.WorldMapUI.SetActive (true);
 	}
 
 	public void CloseEyesAndSleep() {
