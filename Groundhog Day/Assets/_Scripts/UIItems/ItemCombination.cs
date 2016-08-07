@@ -7,11 +7,11 @@ public class ItemCombination : MonoBehaviour , IDropHandler{
 	public GameObject PartnerItem;
 	public GameObject ResultItem;
 
-	void OnStart() 
+	ItemCombination[] _allItemCombinations;
+
+	void Start() 
 	{
-		if(PartnerItem == null || ResultItem == null) {
-			throw new MissingReferenceException ();	
-		}
+		_allItemCombinations = gameObject.GetComponents<ItemCombination> ();
 	}
 
 	#region IdropHandler implementation
@@ -28,7 +28,20 @@ public class ItemCombination : MonoBehaviour , IDropHandler{
 			Grid.EventHub.TriggerUpdateObjectEvent (gameObject, false);
 			Grid.EventHub.TriggerUpdateObjectEvent (PartnerItem, false);
 			Grid.EventHub.TriggerUpdateObjectEvent (ResultItem, true);
+			Grid.SoundManager.PlaySingle (Grid.SoundManager.OnCombinationSound);
+		} else if(!OneOfTheOtherFits(obj)) {
+			Grid.SoundManager.PlaySingle (Grid.SoundManager.OnNotPossibleSound);
 		}
 	}
 	#endregion
+
+	bool OneOfTheOtherFits(GameObject obj) {
+		foreach(ItemCombination combi in _allItemCombinations) 
+		{
+			if (combi.PartnerItem == obj) {
+				return true;
+			}
+		}
+		return false;
+	}
 }﻿
