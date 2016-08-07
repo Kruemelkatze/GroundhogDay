@@ -1,10 +1,24 @@
 fileFormatVersion: 2
 guid: acf9e775dfab5eb4b8afb54485f30d3a
-timeCreated: 1470513350
+timeCreated: 1470568041
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - HF1: {fileID: 8300000, guid: a8a7d48b28f71ab4aada66c2c7c92605, type: 3}
+  - HF2: {fileID: 8300000, guid: 184bea8b299e5434f990db090685f415, type: 3}
+  - HF3: {fileID: 8300000, guid: eaa77f9d6516be44bb21450e3528ef52, type: 3}
+  - HF4: {fileID: 8300000, guid: 7035c18144bd7b84d80dff4cf7018156, type: 3}
+  - HF5: {fileID: 8300000, guid: 12b7e20fae43f0c458ba4010e484dae5, type: 3}
+  - HF6: {fileID: 8300000, guid: aa04f439e19b8cc4fb9203fc72a360f6, type: 3}
+  - HF7: {fileID: 8300000, guid: 56385c13621048a4f82d94a55b661389, type: 3}
+  - HF8: {fileID: 8300000, guid: 918da916e6baea546bd3d377dbc61875, type: 3}
+  - HF9: {fileID: 8300000, guid: 7e4f4192e544adf47bdce3e59100b095, type: 3}
+  - MECH1: {fileID: 8300000, guid: 2bad8eb14fb433e4e8ac074d6608722d, type: 3}
+  - MECH2: {fileID: 8300000, guid: 1ad68777ba35342449a346649bb0db30, type: 3}
+  - Gnome1: {instanceID: 0}
+  - Gnome2: {instanceID: 0}
+  - Gnome3: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
