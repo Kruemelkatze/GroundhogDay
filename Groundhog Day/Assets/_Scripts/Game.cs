@@ -26,6 +26,12 @@ public class Game : MonoBehaviour {
 	public GameObject MachineOldFull;
 	public bool MachineOldEmptyVisible = true;
 	public bool MachineOldFullVisible = false;
+
+	public GameObject MachineNewOk;
+	public GameObject MachineNewDead;
+	public bool MachineNewOkVisible = true;
+	public bool MachineNewDeadVisible = false;
+
 	public bool DEBUG = true;
 
 	//Private Fields
@@ -38,6 +44,9 @@ public class Game : MonoBehaviour {
 		HansInOffice = GameObject.Find("HansInOffice");
 		MachineOldEmpty = GameObject.Find("OldMachineEmpty");
 		MachineOldFull = GameObject.Find("OldMachineFull");
+		MachineNewOk = GameObject.Find("NewMachineOK");
+		MachineNewDead = GameObject.Find("NewMachineDead");
+
 
 		Debug.Log ("Game Object started");
 		_cameraObj = Grid.MainCamera;
@@ -74,5 +83,7 @@ public class Game : MonoBehaviour {
 		PortalSmall.SetActive (PortalSmallVisible);
 		MachineOldEmpty.SetActive (MachineOldEmptyVisible);
 		MachineOldFull.SetActive (MachineOldFullVisible);
+		MachineNewOk.SetActive (MachineNewOkVisible);
+		MachineNewDead.SetActive (MachineNewDeadVisible);
 	}
 }

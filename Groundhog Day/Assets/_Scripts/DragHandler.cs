@@ -9,8 +9,8 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	public static GameObject item;    // i changed itembeigdraged to item.
 
 
-	Transform startParent;
-	Vector3 startPosition;
+	static Transform startParent;
+	static Vector3 startPosition;
 	bool start = true;
 	//Sprite sprite;
 
@@ -39,6 +39,12 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		transform.position = startPosition;
 		GetComponent<CanvasGroup>().blocksRaycasts = true;
 		//item.GetComponent<LayoutElement>().ignoreLayout = false;
+	}
+
+	public static void ResetObject(GameObject obj) {
+		obj.transform.parent = startParent;
+		obj.transform.position = startPosition;
+		obj.GetComponent<CanvasGroup>().blocksRaycasts = true;
 	}
 
 }

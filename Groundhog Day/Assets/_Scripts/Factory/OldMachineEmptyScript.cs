@@ -13,6 +13,11 @@ public class OldMachineEmptyScript : InteractiveWorldObject {
 			Grid.GameLogic.UpdateVisibilities ();
 
 			Grid.Inventory.BucketAcid = false;
+			Grid.Inventory.BucketEmpty = true;
+
+			Grid.Inventory.UpdateInventoryVisibility();
+
+			DragHandler.ResetObject (GameObject.Find ("BucketEmptyUI"));
 			return true;
 		default:
 			return false;

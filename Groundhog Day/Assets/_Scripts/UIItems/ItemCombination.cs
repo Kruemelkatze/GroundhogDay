@@ -6,6 +6,7 @@ public class ItemCombination : MonoBehaviour , IDropHandler{
 
 	public GameObject PartnerItem;
 	public GameObject ResultItem;
+	public GameObject ResultItem2;
 
 	ItemCombination[] _allItemCombinations;
 
@@ -28,6 +29,9 @@ public class ItemCombination : MonoBehaviour , IDropHandler{
 			Grid.EventHub.TriggerUpdateObjectEvent (gameObject, false);
 			Grid.EventHub.TriggerUpdateObjectEvent (PartnerItem, false);
 			Grid.EventHub.TriggerUpdateObjectEvent (ResultItem, true);
+			if (ResultItem2 != null) {
+				Grid.EventHub.TriggerUpdateObjectEvent (ResultItem2, true);
+			}
 			Grid.SoundManager.PlaySingle (Grid.SoundManager.OnCombinationSound);
 		} else if(!OneOfTheOtherFits(obj)) {
 			Grid.SoundManager.PlaySingle (Grid.SoundManager.OnNotPossibleSound);
