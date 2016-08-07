@@ -22,32 +22,9 @@ public class InputManager : MonoBehaviour {
 		}
 
 		if (Grid.GameLogic.DEBUG) {
-			if (Input.GetKeyDown (KeyCode.F)) {
-				Grid.SoundManager.PlayMusic (Grid.SoundManager.FactoryTheme);
-				Grid.EventHub.TriggerMoveCameraEvent (Grid.GameLogic.FactoryPosition, Grid.GameLogic.FactoryRotation, false, true);
-			}
-
-			if (Input.GetKeyDown (KeyCode.V)) {
+			if (Input.GetKeyDown (KeyCode.Space)) {
 				Grid.SoundManager.PlayMusic (Grid.SoundManager.VillageTheme);
 				Grid.EventHub.TriggerMoveCameraEvent (Grid.GameLogic.VillagePosition, Grid.GameLogic.VillageRotation, false, true);
-			}
-
-			if (Input.GetKeyDown (KeyCode.S)) {
-				Grid.SoundManager.PlayMusic (Grid.SoundManager.OfficeTheme);
-				Grid.EventHub.TriggerMoveCameraEvent (Grid.GameLogic.StoreRoomPosition, Grid.GameLogic.StoreRoomRotation, false, true);
-			}
-
-			if (Input.GetKeyDown (KeyCode.Escape)) {
-				Grid.EventHub.TriggerResetEvent ();
-			}
-
-			if (Input.GetKeyDown (KeyCode.I)) {
-				Grid.Inventory.UpdateObject (new GameObject ("BucketEmpty"), true);
-			}
-
-			if (Input.GetKeyDown (KeyCode.D)) {
-				dialog = !dialog;
-				Grid.EventHub.TriggerShowDialogUi (dialog);
 			}
 		}
 	}
